@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="MainModule">
+
+<head>
+
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
+
+</head>
+
+<body>
+    <div>
+        <!-- include nav bar  -->
+        <nav ng-include src="'Frontend/templates/nav.html'" style="margin-bottom:3%;"></nav>
+
+        <!-- the view's will go here  -->
+        <ui-view class="ng-scope"></ui-view>
+
+
+
+        <!-- modules  -->
+        <script src="Frontend/module/MainModule.js"></script>
+
+        <!-- controllers path -->
+        <script src="Frontend/controllers/viewController.js"></script>
+        <script src="Frontend/controllers/mainController.js"></script>
+
+        <!-- services path  -->
+        <script src="Frontend/services/viewBooksService.js"></script>
+        <script src="Frontend/services/bookService.js"></script>
+
+
+        
+
+
+
+
+</body>
+
+</html>

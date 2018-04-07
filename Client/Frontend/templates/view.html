@@ -1,0 +1,130 @@
+<div class="container">
+    <div class="col-lg-6">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for..." ng-model="view.searchText">
+            <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button">Go!</button>
+            </span>
+        </div>
+    </div>
+</div>
+<br>
+<!-- start table -----(--) -->
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">ID </th>
+            <th scope="col">Name</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Time</th>
+            <th scope="col">Treatment</th>
+            <th scope="col">Details</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="book in view.books  | filter:view.searchText track by $index">
+            <th>{{book.id}}</th>
+            <th>{{book.name}}</th>
+            <th>{{book.email}}</th>
+            <td>{{book.mobile}}</td>
+            <td>{{book.timeSlot}}</td>
+            <td>{{book.treatment}}</td>
+            <td>
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click="view.Index($index)">Details</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-warning" ng-click="view.delete($index)"> Delete </button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editModal" ng-click="view.Index($index)">Edit</button>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+
+<!-- Details  modal ))))))))))))((((((((((((-->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">{{view.x.name}}</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                Phone : {{view.x.mobile}}
+                <br> Time : {{view.x.timeSlot}}
+                <br> E-mail : {{view.x.email}}
+                <br> Treatment : {{view.x.treatment}}
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Edit modal _____(--)(--)(--)(--) -->
+<div class="modal fade" id="editModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">{{view.x.name}}</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                Phone :
+                <input type="text" class="form-control" disabled placeholder=" {{view.x.mobile}}" ng-value="{{view.x.mobile}}"></input>
+                <br>
+                Time :
+                <select class="custom-select" placeholder=" {{view.x.timeSlot}}" value="{{view.x.timeSlot}} " ng-model="view.x.timeSlot">
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                </select>
+                E-mail :
+                <input type="text" class="form-control" disabled placeholder=" {{view.x.email}} " value="{{view.x.email}} "></input>
+                <br> Note :
+                <input type="text" class="form-control" placeholder=" {{view.x.note}} " value="{{view.x.note}} "
+                    ng-model="view.x.note"></input>
+                <br>
+                Treatment:
+                <select class="custom-select" value="{{view.x.treatment}} " ng-model="view.x.treatment">
+                    <option value="Alf Layla Wa Layla spa">Alf Layla Wa Layla spa</option>
+                    <option value="Al-Pasha Turkish Bath spa">Al-Pasha Turkish Bath spa</option>
+                    <option value="Zara Spa">Zara Spa</option>
+                </select>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="view.Save()">Save</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- D(--)A -->
